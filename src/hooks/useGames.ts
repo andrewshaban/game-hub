@@ -1,4 +1,5 @@
 import useData from './useData';
+import { Genre } from './useGenres';
 
 export interface Platform {
   platform: {
@@ -26,6 +27,7 @@ export interface Game {
   playtime: number;
   suggestions_count: number;
   updated: Date;
+  genres: Genre[];
   esrb_rating: {
     id: number;
     slug: string;

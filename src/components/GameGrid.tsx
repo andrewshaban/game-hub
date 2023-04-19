@@ -7,7 +7,7 @@ import GameCardContainer from './GameCardContainer';
 type Props = {};
 
 const GameGrid = (props: Props) => {
-  const { games, error, isLoading } = useGames();
+  const { data, error, isLoading } = useGames();
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   return (
@@ -21,13 +21,13 @@ const GameGrid = (props: Props) => {
           spacing={10}>
           {isLoading &&
             skeletons.map((skeleton) => (
-              <GameCardContainer>
+              <GameCardContainer key={skeleton}>
                 <GameCardSkeleton key={skeleton} />
               </GameCardContainer>
             ))}
 
-          {games.map((game) => (
-            <GameCardContainer>
+          {data.map((game) => (
+            <GameCardContainer key={game.id}>
               <GameCard key={game.id} game={game} />
             </GameCardContainer>
           ))}

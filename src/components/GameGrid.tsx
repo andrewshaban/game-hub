@@ -9,7 +9,7 @@ type Props = {
 };
 
 const GameGrid = ({ genreId }: Props) => {
-  const { data, error, isLoading } = useGames();
+  const { data, error, isLoading } = useGames(genreId);
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   return (
@@ -28,18 +28,11 @@ const GameGrid = ({ genreId }: Props) => {
               </GameCardContainer>
             ))}
 
-          {data
-            .filter((game) =>
-              game.genres.some((genre) => {
-                if (genreId === 0) return true;
-                return genre.id === genreId;
-              })
-            )
-            .map((game) => (
-              <GameCardContainer key={game.id}>
-                <GameCard key={game.id} game={game} />
-              </GameCardContainer>
-            ))}
+          {data.map((game) => (
+            <GameCardContainer key={game.id}>
+              <GameCard key={game.id} game={game} />
+            </GameCardContainer>
+          ))}
         </SimpleGrid>
       )}
     </>

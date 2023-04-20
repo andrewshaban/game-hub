@@ -36,8 +36,12 @@ export interface Game {
   parent_platforms: Platform[];
 }
 
-const useGames = () => {
-  return useData<Game>('/games');
+const useGames = (genreId: number) => {
+  if (genreId === 0) {
+    return useData<Game>('/games');
+  } else {
+    return useData<Game>('/games', { params: { genres: genreId } });
+  }
 };
 
 export default useGames;

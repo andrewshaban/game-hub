@@ -1,12 +1,13 @@
 import useData from './useData';
-interface PlatformForMenu {
+
+export interface Platform {
   id: number;
   name: string;
   slug: string;
 }
 
 const usePlatforms = () => {
-  return useData<PlatformForMenu>('/platforms/lists/parents');
+  return useData<Platform>('/platforms/lists/parents');
 };
 
 export default usePlatforms;

@@ -12,10 +12,10 @@ import getCroppedImageUrl from '../services/imageUrl';
 import { useState } from 'react';
 
 type Props = {
-  setGenreId: (id: number) => void;
+  setGenre: (genre: Genre) => void;
 };
 
-const GenreList = ({ setGenreId }: Props) => {
+const GenreList = ({ setGenre }: Props) => {
   const { data, isLoading } = useGenres();
   const [selectedGenreId, setSelectedGenreId] = useState(0);
   if (isLoading) return <Spinner />;
@@ -32,7 +32,7 @@ const GenreList = ({ setGenreId }: Props) => {
             <Button
               onClick={() => {
                 setSelectedGenreId(genre.id);
-                setGenreId(genre.id);
+                setGenre(genre);
               }}
               {...(genre.id === selectedGenreId
                 ? { fontWeight: 'bold' }

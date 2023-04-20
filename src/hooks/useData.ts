@@ -16,12 +16,11 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig) => {
 
   let dependences = [] as any[];
 
-  if (requestConfig?.params !== undefined) {
+  if (requestConfig?.params !== (null || undefined)) {
     dependences = Object.values(requestConfig?.params).filter(
-      (param) => param !== undefined
+      (param) => param !== (null || undefined)
     );
   }
-  console.log(dependences);
 
   useEffect(() => {
     const controller = new AbortController();

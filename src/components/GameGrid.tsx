@@ -6,10 +6,11 @@ import GameCardContainer from './GameCardContainer';
 
 type Props = {
   genreId: number;
+  platformId: number;
 };
 
-const GameGrid = ({ genreId }: Props) => {
-  const { data, error, isLoading } = useGames(genreId);
+const GameGrid = ({ genreId, platformId }: Props) => {
+  const { data, error, isLoading } = useGames(genreId, platformId);
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   return (
